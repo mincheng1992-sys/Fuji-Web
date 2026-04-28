@@ -1,1 +1,527 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>FUJI | Japanische Küche in Köln</title>
+    <!-- Google Fonts modern & elegant -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #0b0a0a;
+            background-image: radial-gradient(circle at 10% 20%, rgba(45,40,35,0.6) 0%, #030202 90%);
+            font-family: 'Inter', sans-serif;
+            color: #ece3da;
+            line-height: 1.4;
+        }
+        .site-wrapper { max-width: 1400px; margin: 0 auto; padding: 2rem 2rem 3rem; position: relative; }
+        .bg-grit {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;
+            opacity: 0.12; font-family: monospace; font-size: 14px; overflow: hidden; white-space: pre; color: #d9c8a9;
+        }
+        .bg-grit::before {
+            content: "FANU MC Fuji HOUK PRPUSIT ASHOIANT FUJII COUPE Q CLUBMACK 0594 VELDRD> FuyFull FOISUFFI FCHESUN JOFP 〄 竜 龍 富士 雲 KŌLN ◆ KATANA 侍 ◆ SAKE ◆ 一";
+            position: absolute; bottom: 5%; left: -10%; font-size: 6vw; white-space: nowrap; transform: rotate(-8deg);
+            letter-spacing: 0.2em; font-weight: 700; color: #bc9f6b; opacity: 0.2;
+        }
+        .content { position: relative; z-index: 2; }
+        .hero {
+            border-bottom: 2px solid #b87c4f;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .brand h1 {
+            font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 700; letter-spacing: 6px;
+            color: #efdbc1; text-shadow: 6px 6px 0 rgba(184,124,79,0.3); margin-bottom: 0.2rem; line-height: 1;
+        }
+        .brand-tagline {
+            font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 300;
+            color: #bc9f6b; border-left: 2px solid #b87c4f; padding-left: 12px; margin-top: 8px;
+        }
+        .contact-info {
+            text-align: right; font-size: 0.9rem; background: rgba(20,18,16,0.7); padding: 0.8rem 1.2rem;
+            backdrop-filter: blur(4px); border-radius: 0px 12px 0px 12px; border-right: 2px solid #b87c4f;
+            border-bottom: 1px solid #b87c4f;
+        }
+        .contact-info p { margin: 6px 0; }
+        .contact-info i { margin-right: 8px; color: #e0a878; width: 22px; }
 
+        /* Hero-Bereich mit Text und Fuji-Dekor */
+        .hero-description {
+            margin: 0 0 2.5rem 0;
+            padding: 1.8rem 2rem;
+            background: rgba(20, 17, 14, 0.6);
+            backdrop-filter: blur(3px);
+            border-radius: 24px;
+            border-left: 4px solid #b87c4f;
+            border-right: 1px solid #b87c4f30;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+        .description-text {
+            flex: 3;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #e7d9ca;
+            letter-spacing: 0.2px;
+        }
+        .description-text p {
+            margin-bottom: 0.5rem;
+        }
+        .decorative-icon {
+            flex: 0 0 120px;
+            text-align: center;
+            background: rgba(184,124,79,0.15);
+            border-radius: 32px;
+            padding: 0.8rem;
+            backdrop-filter: blur(4px);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .decorative-icon .fuji-emoji {
+            font-size: 3.8rem;
+            filter: drop-shadow(0 0 4px #e0a878);
+        }
+        .decorative-icon .fuji-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #efdbc1;
+            border-top: 1px solid #b87c4f;
+            padding-top: 0.3rem;
+        }
+        .decorative-icon:hover {
+            transform: scale(1.02);
+            background: rgba(184,124,79,0.3);
+        }
+        @media (max-width: 760px) {
+            .hero-description { flex-direction: column; text-align: center; padding: 1.5rem; }
+            .decorative-icon { margin-top: 0.5rem; width: auto; }
+        }
+
+        .menu-nav {
+            display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0 2rem;
+            border-bottom: 1px solid #3a2e26; padding-bottom: 1.2rem;
+        }
+        .menu-btn {
+            background: none; border: none; font-size: 1.3rem; font-weight: 600; padding: 0.6rem 1.8rem;
+            cursor: pointer; color: #d2c2ad; font-family: 'Inter', sans-serif; letter-spacing: 1px;
+            transition: 0.2s ease; position: relative; border-radius: 0px;
+        }
+        .menu-btn:hover { color: #f2e0c9; background: rgba(184,124,79,0.2); }
+        .menu-btn.active { color: #f6e3cc; background: #b87c4f30; border-left: 3px solid #b87c4f; border-right: 3px solid #b87c4f; }
+        .menu-btn.active::after { content: ''; position: absolute; bottom: -6px; left: 20%; width: 60%; height: 2px; background: #e0a56e; }
+        .menu-display {
+            background: #14110e; border: 1px solid #2e2620; box-shadow: 20px 20px 30px rgba(0,0,0,0.5);
+            margin: 1.5rem 0 2rem; padding: 1.5rem; border-radius: 2px;
+        }
+        .text-menu { width: 100%; }
+        .menu-category-title {
+            font-family: 'Playfair Display', serif; font-size: 2rem; border-left: 4px solid #b87c4f;
+            padding-left: 1rem; margin-bottom: 1.5rem; letter-spacing: 1px;
+        }
+        .subcategory-title {
+            font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 1.2rem 0 0.8rem 0;
+            padding-bottom: 0.3rem; border-bottom: 1px solid #b87c4f60; color: #e7cfb0;
+        }
+        .menu-items { display: flex; flex-direction: column; gap: 0.8rem; }
+        .menu-item-row {
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;
+            padding: 0.7rem 0; border-bottom: 1px dashed #3a2c22; transition: 0.1s ease;
+        }
+        .menu-item-row:hover { background: rgba(184,124,79,0.1); padding-left: 8px; }
+        .item-info { flex: 3; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: baseline; }
+        .item-id { font-weight: 600; color: #e0a56e; min-width: 55px; font-size: 0.9rem; }
+        .item-name { font-weight: 700; font-size: 1.05rem; color: #f0ddc4; min-width: 160px; }
+        .item-desc { color: #c6b197; font-size: 0.9rem; font-weight: 400; word-break: break-word; flex: 2; }
+        .item-price { font-weight: 600; color: #eabb8c; background: #231f1a; padding: 0.2rem 0.7rem; border-radius: 24px; font-size: 0.9rem; white-space: nowrap; }
+        .image-placeholder {
+            width: 100%; min-height: 380px; background-color: #1e1915;
+            background-image: repeating-linear-gradient(45deg, #2c241e 0px, #2c241e 2px, #1f1914 2px, #1f1914 8px);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px;
+            border: 1px dashed #b87c4f;
+        }
+        .menu-img { max-width: 100%; max-height: 65vh; object-fit: contain; border-radius: 4px; cursor: pointer; }
+        .placeholder-text { text-align: center; padding: 3rem; color: #b99f7c; }
+        .placeholder-text i { font-size: 3rem; margin-bottom: 1rem; display: block; color: #b87c4f; }
+        .upload-area {
+            margin-top: 15px; background: #0f0d0b80; border-radius: 28px; padding: 6px 12px;
+            font-size: 0.7rem; display: inline-flex; align-items: center; gap: 10px; backdrop-filter: blur(4px);
+        }
+        .upload-label {
+            background: #b87c4f60; padding: 4px 12px; border-radius: 20px; cursor: pointer;
+            transition: 0.15s; display: inline-flex; align-items: center; gap: 6px;
+        }
+        .upload-label:hover { background: #b87c4f; color: black; }
+        input[type="file"] { display: none; }
+        .info-note {
+            margin-top: 0.8rem; font-size: 0.75rem; text-align: center; color: #a48e6e;
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+        }
+        .info-note span { background: #1a1612; padding: 5px 10px; border-radius: 20px; }
+        .footer-address {
+            margin-top: 3.5rem; padding-top: 1.8rem; border-top: 1px solid #352c24;
+            display: flex; flex-wrap: wrap; justify-content: space-between; font-size: 0.85rem; color: #bba27e;
+        }
+        .legal { font-size: 0.7rem; opacity: 0.6; }
+        @media (max-width: 760px) {
+            .site-wrapper { padding: 1rem; }
+            .brand h1 { font-size: 3rem; }
+            .hero { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .contact-info { text-align: left; width: 100%; }
+            .menu-btn { font-size: 1rem; padding: 0.4rem 1rem; }
+            .menu-item-row { flex-direction: column; gap: 5px; }
+            .item-price { align-self: flex-start; margin-top: 4px; }
+            .item-info { flex-direction: column; gap: 0.2rem; }
+            .item-desc { margin-left: 0; }
+        }
+        button:active { transform: scale(0.97); }
+    </style>
+</head>
+<body>
+<div class="bg-grit"></div>
+<div class="site-wrapper">
+    <div class="content">
+        <div class="hero">
+            <div class="brand"><h1>FUJI</h1><div class="brand-tagline">japanische Küche · handwerk · seele</div></div>
+            <div class="contact-info">
+                <p><i class="fas fa-map-marker-alt"></i> Venloer Str. 242, 50823 Köln</p>
+                <p><i class="fas fa-phone-alt"></i> 0221 16835301</p>
+                <p><i class="far fa-clock"></i> Mo–Fr 12:00–15:00, 17:00–22:30<br>Sa 12:00–22:00 · So 15:00–22:00</p>
+            </div>
+        </div>
+
+        <!-- NEU: Beschreibung + Fuji-Dekor (Korrektur: Erleben Sie) -->
+        <div class="hero-description">
+            <div class="description-text">
+                <p>🗻 <strong>Erleben Sie</strong> die Vielfalt der japanischen Küche – von kunstvoll zubereitetem Sushi bis hin zu frisch kreierten Spezialitäten, die Tradition und Moderne harmonisch verbinden. Tauchen Sie ein in eine Atmosphäre voller Ruhe, Ästhetik und Geschmack und genießen Sie authentischen Genuss, der alle Sinne anspricht.</p>
+            </div>
+            <div class="decorative-icon">
+                <div class="fuji-emoji">🗻</div>
+                <div class="fuji-text">FUJI</div>
+            </div>
+        </div>
+
+        <div class="menu-nav">
+            <button class="menu-btn" data-category="getranke">Getränke</button>
+            <button class="menu-btn" data-category="vorspeise">Vorspeise</button>
+            <button class="menu-btn" data-category="hauptgericht">Hauptgericht</button>
+            <button class="menu-btn" data-category="ramen">Ramen</button>
+            <button class="menu-btn" data-category="sushi">Sushi</button>
+            <button class="menu-btn" data-category="nachtisch">Beilage/Nachtisch</button>
+        </div>
+
+        <div class="menu-display" id="menuDisplay"></div>
+
+        <div class="footer-address">
+            <div>🍜 FUJI · 富士 · japanische Spezialitäten aus Köln Ehrenfeld</div>
+            <div class="legal"><i class="far fa-copyright"></i> 2025 — Alle Gerichte mit Liebe zubereitet</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ----- Hilfsfunktion Preisformat (zwei Nachkommastellen) -----
+    function formatPrice(value) {
+        let num = typeof value === 'number' ? value : parseFloat(String(value).replace(',', '.'));
+        if (isNaN(num)) return value + " €";
+        let fixed = num.toFixed(2).replace('.', ',');
+        return `${fixed} €`;
+    }
+
+    // ======================= 1. GETRÄNKE =======================
+    const getrankeItems = [
+        { id: "G-1", name: "Reisdorf Kölsch", desc: "0,33 l", priceRaw: 3.50, group: "Bier" },
+        { id: "G-2", name: "Reisdorf Kölsch", desc: "0,50 l", priceRaw: 3.90, group: "Bier" },
+        { id: "G-3", name: "Kirin Bier", desc: "0,33 l", priceRaw: 3.90, group: "Bier" },
+        { id: "G-4", name: "Hefe Weißbier", desc: "0,50 l", priceRaw: 3.90, group: "Bier" },
+        { id: "G-5", name: "Becks", desc: "0,50 l", priceRaw: 3.90, group: "Bier" },
+        { id: "G-6", name: "Bitburger", desc: "0,50 l", priceRaw: 3.90, group: "Bier" },
+        { id: "G-7", name: "Königs Pilsener", desc: "0,50 l", priceRaw: 3.90, group: "Bier" },
+        { id: "G-8", name: "Hefe Weißbier (alkoholfrei)", desc: "0,50 l", priceRaw: 3.90, group: "Alkoholfreies Bier" },
+        { id: "G-9", name: "Bitburger (alkoholfrei)", desc: "0,50 l", priceRaw: 3.90, group: "Alkoholfreies Bier" },
+        { id: "G-10", name: "Malz Bier", desc: "0,50 l", priceRaw: 3.90, group: "Alkoholfreies Bier" },
+        { id: "G-11", name: "Fassbrause", desc: "0,33 l", priceRaw: 3.50, group: "Alkoholfreies Bier" },
+        { id: "G-12", name: "Sake (warm)", desc: "0,15 l", priceRaw: 5.50, group: "Sake & Wein" },
+        { id: "G-13", name: "Sake (warm)", desc: "0,25 l", priceRaw: 9.90, group: "Sake & Wein" },
+        { id: "G-14", name: "Sake (kalt)", desc: "0,15 l", priceRaw: 5.50, group: "Sake & Wein" },
+        { id: "G-15", name: "Sake (kalt)", desc: "0,25 l", priceRaw: 9.90, group: "Sake & Wein" },
+        { id: "G-16", name: "Pflaumenwein", desc: "0,15 l", priceRaw: 3.50, group: "Sake & Wein" },
+        { id: "G-17", name: "Weißwein trocken", desc: "0,20 l", priceRaw: 3.80, group: "Sake & Wein" },
+        { id: "G-18", name: "Weißwein trocken", desc: "0,50 l", priceRaw: 8.60, group: "Sake & Wein" },
+        { id: "G-19", name: "Rotwein", desc: "0,20 l", priceRaw: 4.00, group: "Sake & Wein" },
+        { id: "G-20", name: "Rotwein", desc: "0,50 l", priceRaw: 9.00, group: "Sake & Wein" },
+        { id: "G-21", name: "Grüner Tee", desc: "Tasse", priceRaw: 1.50, group: "Tee" },
+        { id: "G-22", name: "Jasmin Tee", desc: "Tasse", priceRaw: 1.50, group: "Tee" },
+        { id: "G-23", name: "Ingwer Tee", desc: "Tasse", priceRaw: 2.50, group: "Tee" },
+        { id: "G-24", name: "Mineralwasser (Sprudel)", desc: "0,25 l", priceRaw: 2.50, group: "Wasser & Softdrinks" },
+        { id: "G-25", name: "Mineralwasser (Sprudel)", desc: "0,75 l", priceRaw: 6.00, group: "Wasser & Softdrinks" },
+        { id: "G-26", name: "Mineralwasser (Naturell)", desc: "0,25 l", priceRaw: 2.50, group: "Wasser & Softdrinks" },
+        { id: "G-27", name: "Mineralwasser (Naturell)", desc: "0,75 l", priceRaw: 6.00, group: "Wasser & Softdrinks" },
+        { id: "G-28", name: "Calpico (jap. Milchdrink)", desc: "0,30 l", priceRaw: 3.50, group: "Wasser & Softdrinks" },
+        { id: "G-29", name: "Cola", desc: "0,30 l", priceRaw: 3.00, group: "Wasser & Softdrinks" },
+        { id: "G-30", name: "Cola Light", desc: "0,30 l", priceRaw: 3.00, group: "Wasser & Softdrinks" },
+        { id: "G-31", name: "Fanta", desc: "0,30 l", priceRaw: 3.00, group: "Wasser & Softdrinks" },
+        { id: "G-32", name: "Sprite", desc: "0,30 l", priceRaw: 3.00, group: "Wasser & Softdrinks" },
+        { id: "G-33", name: "Bitter Lemon", desc: "0,30 l", priceRaw: 3.50, group: "Wasser & Softdrinks" },
+        { id: "G-34", name: "Orangensaft", desc: "0,30 l", priceRaw: 3.50, group: "Wasser & Softdrinks" },
+        { id: "G-35", name: "Apfelsaft", desc: "0,30 l", priceRaw: 3.50, group: "Wasser & Softdrinks" },
+        { id: "G-36", name: "Rhabarberschorle", desc: "0,33 l", priceRaw: 3.50, group: "Bio-Schorle" },
+        { id: "G-37", name: "Apfelschorle", desc: "0,33 l", priceRaw: 3.50, group: "Bio-Schorle" },
+        { id: "G-38", name: "Johannisbeerschorle", desc: "0,33 l", priceRaw: 3.50, group: "Bio-Schorle" },
+        { id: "G-39", name: "Kaffee", desc: "Tasse", priceRaw: 2.50, group: "Kaffee" },
+        { id: "G-40", name: "Cappuccino", desc: "Tasse", priceRaw: 2.50, group: "Kaffee" },
+        { id: "G-41", name: "Espresso", desc: "Tasse", priceRaw: 2.50, group: "Kaffee" }
+    ];
+
+    // Vorspeise
+    const vorspeiseItems = [
+        { id: "V-1", name: "Hijiki", desc: "Gekochte Hijiki-Meeresalgen", priceRaw: 4.00 },
+        { id: "V-2", name: "Edamame", desc: "Gekochte grüne Sojabohnen", priceRaw: 4.00 },
+        { id: "V-3", name: "Goma-Wakame", desc: "Meeresalgensalat mit Sesam", priceRaw: 4.00 },
+        { id: "V-4", name: "Yakitori", desc: "Hühnerfleisch am Spieß", priceRaw: 4.50 },
+        { id: "V-5", name: "Goma-ae", desc: "Spinat mit Sesam-Erdnuss-Soße", priceRaw: 4.90 },
+        { id: "V-6", name: "Yaki-Gyoza", desc: "Gebratene Teigtaschen", priceRaw: 6.00 },
+        { id: "V-7", name: "Yasai-Itame", desc: "Gebratenes Gemüse", priceRaw: 6.00 },
+        { id: "V-8", name: "Ika-Sugata", desc: "Gekochter Tintenfisch mit süßer Sojasoße", priceRaw: 11.00 },
+        { id: "V-9", name: "Sake-Nuta", desc: "Lachs und Lauchzwiebeln mit Misosoße", priceRaw: 6.50 },
+        { id: "V-10", name: "Maguro-Nuta", desc: "Roher Thunfisch und Lauchzwiebeln mit Misosoße", priceRaw: 6.90 },
+        { id: "V-11", name: "Tori-Karaage", desc: "Frittiertes Hühnerfleisch", priceRaw: 7.50 },
+        { id: "V-12", name: "Ikageso-Kara", desc: "Frittierter Tintenfisch", priceRaw: 8.50 },
+        { id: "V-13", name: "Agedashi-Tofu", desc: "Gebackener Tofu in gewürzter Sojasoße", priceRaw: 5.50 },
+        { id: "V-14", name: "Aga-Nasu", desc: "Gebackene Auberginen in gewürzter Sojasoße", priceRaw: 5.50 },
+        { id: "V-15", name: "Nasu-Dengaku", desc: "Gebackene Auberginen mit Misopaste", priceRaw: 6.50 },
+        { id: "V-18", name: "Grüner Salat", desc: "Kleiner gemischter Salat", priceRaw: 3.00 },
+        { id: "V-19", name: "Wakame-Salat", desc: "Meeresalgensalat", priceRaw: 7.90 },
+        { id: "V-20", name: "Sashimi-Salat", desc: "Salat mit rohem Fischfilet", priceRaw: 10.00 }
+    ];
+
+    // Hauptgericht
+    const hauptgerichtItems = [
+        { id: "H-1", name: "Tonkatsu", desc: "Schweineschnitzel nach japanischer Art, dazu kleiner Salat und Reis", priceRaw: 12.90, group: "warm" },
+        { id: "H-2", name: "Sakana-no-mix-furai", desc: "Verschiedene panierte Fischfilets, dazu kleiner Salat und Reis", priceRaw: 12.90, group: "warm" },
+        { id: "H-3", name: "Sake-no-Teriyaki", desc: "Gebratener Lachs mit süßer Sojasoße, kleiner Salat und Reis", priceRaw: 12.90, group: "warm" },
+        { id: "H-4", name: "Gyu-Yakiniku", desc: "Gebratenes Rindfleisch und Zwiebel mit süßer Sojasoße, kleiner Salat und Reis", priceRaw: 14.00, group: "warm" },
+        { id: "H-5", name: "Tori-Teriyaki", desc: "Gebratenes Hühnerfleisch mit süßer Sojasoße, kleiner Salat und Reis", priceRaw: 12.90, group: "warm" },
+        { id: "T-1", name: "Yasai-Tempura", desc: "Gemüse in frittiertem Teigmantel", priceRaw: 12.00, group: "warm" },
+        { id: "T-2", name: "Tempura-Moriawase", desc: "Garnelen und Gemüse im frittierten Teigmantel", priceRaw: 14.00, group: "warm" },
+        { id: "T-3", name: "Ebi-Tempura", desc: "Garnelen im frittierten Teigmantel", priceRaw: 16.00, group: "warm" },
+        { id: "T-4", name: "Tendon", desc: "Frittierte Garnelen und Gemüse auf Reis mit gesüßter Sojasoße, dazu Miso-Suppe", priceRaw: 16.00, group: "warm" },
+        { id: "M-13", name: "Fuji-Bento", desc: "SUSHI (Thunfisch, Lachs, Garnelen & Kappa Maki), Tempura gemischt, frittiertes Hühnerfleisch, Spinat mit Erdnuss-Sesamsoße, Algensalat mit Sesam", priceRaw: 25.00, group: "warm" },
+        { id: "N-U1", name: "Kake-Udon", desc: "Udon-Nudelsuppe (klare Brühe)", priceRaw: 10.00, group: "noodle" },
+        { id: "N-U2", name: "Tanuki-Udon", desc: "Udon mit frittierten Teigstückchen", priceRaw: 11.00, group: "noodle" },
+        { id: "N-U3", name: "Wakame-Udon", desc: "Udon mit Seetang", priceRaw: 11.00, group: "noodle" },
+        { id: "N-U4", name: "Tempura-Udon", desc: "Udon mit Tempura (frittierte Garnele)", priceRaw: 13.00, group: "noodle" },
+        { id: "N-U5", name: "Kalte-Udon", desc: "Kalte Udon-Nudeln", priceRaw: 9.00, group: "noodle" },
+        { id: "N-U6", name: "Kalte-Udon mit Tempura", desc: "Kalte Udon mit frittierter Garnele", priceRaw: 13.00, group: "noodle" },
+        { id: "N-S1", name: "Kake-Soba", desc: "Soba-Nudelsuppe (klare Brühe)", priceRaw: 10.00, group: "noodle" },
+        { id: "N-S2", name: "Tanuki-Soba", desc: "Soba mit frittierten Teigstückchen", priceRaw: 11.00, group: "noodle" },
+        { id: "N-S3", name: "Wakame-Soba", desc: "Soba mit Seetang", priceRaw: 11.00, group: "noodle" },
+        { id: "N-S4", name: "Tempura-Soba", desc: "Soba mit Tempura (frittierte Garnele)", priceRaw: 13.00, group: "noodle" },
+        { id: "N-S5", name: "Kalte-Soba", desc: "Kalte Soba-Nudeln", priceRaw: 9.00, group: "noodle" },
+        { id: "N-S6", name: "Kalte-Soba mit Tempura", desc: "Kalte Soba mit frittierter Garnele", priceRaw: 13.00, group: "noodle" }
+    ];
+
+    // Ramen
+    const ramenItems = [
+        { id: "N-R1", name: "Yasai-Ramen", desc: "Ramen-Nudelsuppe mit Gemüse", priceRaw: 13.00 },
+        { id: "N-R2", name: "Tofu-Ramen", desc: "Ramen-Nudelsuppe mit Gemüse und Tofu", priceRaw: 13.90 },
+        { id: "N-R3", name: "Chashu-Ramen", desc: "Ramen-Nudelsuppe mit Gemüse und Schweinebauchfleisch", priceRaw: 13.90 },
+        { id: "N-R4", name: "Torinku-Ramen", desc: "Ramen-Nudelsuppe mit Gemüse und Hühnerfleisch", priceRaw: 13.90 },
+        { id: "N-R5", name: "Gyuniku-Ramen", desc: "Ramen-Nudelsuppe mit Gemüse und Rindfleisch", priceRaw: 13.90 },
+        { id: "N-R6", name: "Kimchi-Ramen", desc: "Ramen-Nudelsuppe mit Kimchi und Schweinebauchfleisch", priceRaw: 13.90 },
+        { id: "N-R7", name: "Wan-Tan-Ramen", desc: "Ramen-Nudelsuppe mit Gemüse und Wan-Tan (Teigtaschen)", priceRaw: 13.90 },
+        { id: "N-R8", name: "Chanpon-Ramen", desc: "Ramen-Nudelsuppe mit Gemüse, Schweinebauch, Krabben und Tintenfisch", priceRaw: 13.90 }
+    ];
+
+    // Sushi (alle Untergruppen)
+    const sushiSets = [
+        { id: "S-A", name: "SUSHI-Set A", desc: "7x Lachs, 1x Lachs-Rolle (6 Stk.)", priceRaw: 15.00, group: "Sushi-Sets" },
+        { id: "S-B", name: "SUSHI-Set B", desc: "1x Thunfisch, 1x Lachs, 1x Tilapia, 1x Garnele, 1x Ebi, 1x Tobiko, 1x Avocado-Rolle (6 Stk.), 1x Lachs-Rolle (6 Stk.)", priceRaw: 16.00, group: "Sushi-Sets" },
+        { id: "S-C", name: "SUSHI-Set C", desc: "1x Thunfisch, 1x Lachs, 1x Tilapia, 1x Garnele, 1x Makrele, 1x Tako, 1x Thunfisch Rolle (6 Stk.), 1x California Sesam (2 Stk.), 1x California Tobiko (2 Stk.)", priceRaw: 18.00, group: "Sushi-Sets" },
+        { id: "S-D", name: "SUSHI-Set D", desc: "3x Thunfisch, 3x Lachs", priceRaw: 13.90, group: "Sushi-Sets" },
+        { id: "S-E", name: "SUSHI-Set E", desc: "1x Thunfisch, 1x Thunfischfett, 1x Lachs, 1x Aal, 1x Garnele, 1x Tintenfisch, 1x Makrele, 1x Gelbschwanz, 1x Jacobsmuschel", priceRaw: 22.00, group: "Sushi-Sets" },
+        { id: "S-F", name: "SUSHI-Set F (vegetarisch)", desc: "1x Avocado-Rolle (6 Stk.), 1x Rettich-Rolle (6 Stk.), 1x Goma-Wakame-Rolle (6 Stk.), 1x Gurke Nigiri, 1x Mango Nigiri", priceRaw: 14.90, group: "Sushi-Sets" }
+    ];
+    const donburiItems = [
+        { id: "D-S1", name: "SAKE-DON", desc: "Roher Lachs auf Reis, Miso Suppe", priceRaw: 15.00, group: "Donburi" },
+        { id: "D-S2", name: "SAKE-AVO-DON", desc: "Roher Lachs, Avocado auf Reis, Miso Suppe", priceRaw: 16.50, group: "Donburi" },
+        { id: "D-K", name: "KAISEN-DON", desc: "Thunfisch, Lachs, Tilapia, Ei, Garnelen, Surimi", priceRaw: 16.50, group: "Donburi" },
+        { id: "D-T", name: "TEKKA-DON", desc: "Roher Thunfisch auf Reis, Miso Suppe", priceRaw: 18.00, group: "Donburi" }
+    ];
+    const nigiriItems = [
+        { id: "NI-1", name: "SAKE (Lachs)", desc: "", priceRaw: 2.10, group: "Nigiri" }, { id: "NI-2", name: "MAGURO (Thunfisch)", desc: "", priceRaw: 2.50, group: "Nigiri" },
+        { id: "NI-3", name: "HAMACHI (Gelbschwanzmakrele)", desc: "", priceRaw: 3.90, group: "Nigiri" }, { id: "NI-4", name: "IKURA (Lachskaviar)", desc: "", priceRaw: 3.90, group: "Nigiri" },
+        { id: "NI-5", name: "SABA (Makrele)", desc: "", priceRaw: 3.90, group: "Nigiri" }, { id: "NI-6", name: "IZUMIDAI (Tilapia)", desc: "", priceRaw: 2.10, group: "Nigiri" },
+        { id: "NI-7", name: "EBI (Garnele)", desc: "", priceRaw: 2.50, group: "Nigiri" }, { id: "NI-8", name: "UNAGI (Gegrillter Aal)", desc: "", priceRaw: 3.90, group: "Nigiri" },
+        { id: "NI-9", name: "TOBIKO (Flugfischrogen)", desc: "", priceRaw: 3.90, group: "Nigiri" }, { id: "NI-10", name: "SAKE-TATA (Lachstatar)", desc: "", priceRaw: 2.50, group: "Nigiri" },
+        { id: "NI-11", name: "TAMAGO (Ei/Omelett)", desc: "", priceRaw: 2.10, group: "Nigiri" }, { id: "NI-12", name: "IKA (Tintenfisch)", desc: "", priceRaw: 2.50, group: "Nigiri" },
+        { id: "NI-13", name: "HOTATE (Jakobsmuschel)", desc: "", priceRaw: 3.90, group: "Nigiri" }, { id: "NI-14", name: "TAKO (Oktopus)", desc: "", priceRaw: 2.50, group: "Nigiri" },
+        { id: "NI-15", name: "KANIKAMA (Surimi)", desc: "", priceRaw: 2.50, group: "Nigiri" }, { id: "NI-16", name: "INARI (Tofu-Tasche)", desc: "", priceRaw: 1.90, group: "Nigiri" },
+        { id: "NI-17", name: "KANI-SALAT (Surimi mit Mayo)", desc: "", priceRaw: 2.20, group: "Nigiri" }, { id: "NI-18", name: "NEGITORO GUNKAN (Thunfischfett)", desc: "", priceRaw: 3.90, group: "Nigiri" },
+        { id: "NI-19", name: "AMAEBI (Süßgarnele)", desc: "", priceRaw: 3.90, group: "Nigiri" }, { id: "NI-20", name: "HOKKIGAI (Surfmuschel)", desc: "", priceRaw: 3.90, group: "Nigiri" }
+    ];
+    const temakiItems = [
+        { id: "TM-1", name: "MANGOAVO-TEMAKI", desc: "Mango + Avocado", priceRaw: 5.50, group: "Temaki" }, { id: "TM-2", name: "MAGURO TEMAKI", desc: "Thunfisch + Avocado", priceRaw: 6.00, group: "Temaki" },
+        { id: "TM-3", name: "SAKE TEMAKI", desc: "Lachs + Avocado", priceRaw: 5.50, group: "Temaki" }, { id: "TM-4", name: "CALIFORNIA TEMAKI", desc: "Garnelen + Avocado + Tobiko", priceRaw: 5.50, group: "Temaki" },
+        { id: "TM-5", name: "TUNA TEMAKI", desc: "Thunfischsalat + Avocado", priceRaw: 5.50, group: "Temaki" }, { id: "TM-6", name: "ALASKA TEMAKI", desc: "Lachs + Tobiko + Avocado", priceRaw: 6.00, group: "Temaki" },
+        { id: "TM-7", name: "YASAI TEMAKI", desc: "Gemüse: Gurke + Avocado + Rettich", priceRaw: 5.00, group: "Temaki" }, { id: "TM-8", name: "NEGITORO TEMAKI", desc: "Thunfischfett + Lauch", priceRaw: 6.00, group: "Temaki" }
+    ];
+    const makiItems = [
+        { id: "MK-1", name: "KAPPA-MAKI", desc: "Gurken-Rolle (6 Stk.)", priceRaw: 4.00, group: "Maki-Sushi" }, { id: "MK-2", name: "TAMAGO-MAKI", desc: "Ei (Omelett)-Rolle (6 Stk.)", priceRaw: 4.50, group: "Maki-Sushi" },
+        { id: "MK-3", name: "OSHINKO-MAKI", desc: "Eingelegter Rettich (6 Stk.)", priceRaw: 4.00, group: "Maki-Sushi" }, { id: "MK-4", name: "AVOCADO-MAKI", desc: "Avocado-Rolle (6 Stk.)", priceRaw: 4.00, group: "Maki-Sushi" },
+        { id: "MK-5", name: "SAKE-MAKI", desc: "Lachs-Rolle (6 Stk.)", priceRaw: 4.50, group: "Maki-Sushi" }, { id: "MK-6", name: "KANIKAMA-MAKI", desc: "Surimi-Rolle (6 Stk.)", priceRaw: 4.50, group: "Maki-Sushi" },
+        { id: "MK-7", name: "TSUNA-MAKI", desc: "Thunfischsalat-Rolle (6 Stk.)", priceRaw: 4.50, group: "Maki-Sushi" }, { id: "MK-8", name: "GOMAWAKAME-MAKI", desc: "Algensalat mit Sesam (6 Stk.)", priceRaw: 4.50, group: "Maki-Sushi" },
+        { id: "MK-9", name: "TEKKA-MAKI", desc: "Thunfisch-Rolle (6 Stk.)", priceRaw: 4.90, group: "Maki-Sushi" }, { id: "MK-10", name: "EBIMAYO-MAKI", desc: "Garnelen und Mayonnaise (6 Stk.)", priceRaw: 4.50, group: "Maki-Sushi" },
+        { id: "MK-11", name: "SAKEAVO-MAKI", desc: "Lachs und Avocado (6 Stk.)", priceRaw: 4.90, group: "Maki-Sushi" }, { id: "MK-12", name: "KANPYO-MAKI", desc: "Kürbis-Rolle (6 Stk.)", priceRaw: 4.50, group: "Maki-Sushi" },
+        { id: "MK-13", name: "NEGITORO-MAKI", desc: "Thunfisch mit Lauchzwiebel (6 Stk.)", priceRaw: 4.90, group: "Maki-Sushi" }, { id: "MK-14", name: "CALIFORNIA-GOMA", desc: "mit Garnelen & Avocado, Sesam (6 Stk.)", priceRaw: 4.50, group: "Maki-Sushi" },
+        { id: "MK-15", name: "ALASKA-GOMA", desc: "mit Lachs & Avocado, Sesam (6 Stk.)", priceRaw: 4.50, group: "Maki-Sushi" }, { id: "MK-16", name: "CALIFORNIA-TOBIKO", desc: "mit Garnelen & Avocado, Fischrogen (6 Stk.)", priceRaw: 5.00, group: "Maki-Sushi" },
+        { id: "MK-17", name: "ALASKA-TOBIKO", desc: "mit Lachs & Avocado, Fischrogen (6 Stk.)", priceRaw: 5.00, group: "Maki-Sushi" }, { id: "MK-18", name: "FUTO-MAKI", desc: "Große Rolle mit Ei, Tobiko, Surimi, Gurken, Rettich (4 Stk.)", priceRaw: 6.00, group: "Maki-Sushi" },
+        { id: "MK-19", name: "NAMAFUTO-MAKI", desc: "Große Rolle mit Thunfisch, Lachs, Tilapia, Garnelen & Tobiko (4 Stk.)", priceRaw: 7.00, group: "Maki-Sushi" }, { id: "MK-20", name: "RAINBOW-ROLL", desc: "Lachs, Thunfisch, Weißfisch, Avocado, Flugfischrogen (8 Stk.)", priceRaw: 15.00, group: "Maki-Sushi" }
+    ];
+    const sashimiItems = [
+        { id: "S-G", name: "SASHIMI (groß)", desc: "Thunfisch, Lachs, Tilapia, Garnele, Süßgarnele, Oktopus, Tintenfisch, Jacobsmuscheln", priceRaw: 22.00, group: "Sashimi" },
+        { id: "S-1", name: "SASHIMI-Maguro", desc: "Thunfisch", priceRaw: 8.00, group: "Sashimi" },
+        { id: "S-2", name: "SASHIMI-Sake", desc: "Lachs", priceRaw: 7.50, group: "Sashimi" },
+        { id: "S-3", name: "SASHIMI-Maguro und Lachs", desc: "Thunfisch & Lachs", priceRaw: 14.50, group: "Sashimi" }
+    ];
+    const sushiAllItems = [...sushiSets, ...donburiItems, ...nigiriItems, ...temakiItems, ...makiItems, ...sashimiItems];
+
+    // Beilage & Nachtisch
+    const beilageNachtischItems = [
+        { id: "B-1", name: "Gohan", desc: "Gekochter Reis", priceRaw: 3.00, group: "Beilage" },
+        { id: "B-2", name: "Misoshiru", desc: "Miso-Suppe (aus Sojabohnenpaste)", priceRaw: 4.00, group: "Beilage" },
+        { id: "D-1", name: "Vanille Eis", desc: "", priceRaw: 1.50, group: "Nachtisch" },
+        { id: "D-2", name: "Sesam Eis", desc: "", priceRaw: 2.00, group: "Nachtisch" },
+        { id: "D-3", name: "Grüner Tee Eis", desc: "", priceRaw: 2.00, group: "Nachtisch" },
+        { id: "D-4", name: "Rote-Bohnen Eis", desc: "", priceRaw: 2.00, group: "Nachtisch" },
+        { id: "D-5", name: "Gebackenes Vanille Eis", desc: "", priceRaw: 4.50, group: "Nachtisch" },
+        { id: "D-6", name: "Gebackene Banane", desc: "", priceRaw: 4.50, group: "Nachtisch" },
+        { id: "D-7", name: "Daifuku", desc: "Reiskuchen mit süßer Füllung", priceRaw: 4.50, group: "Nachtisch" },
+        { id: "D-8", name: "Dorayaki", desc: "Japanischer Pfannkuchen mit roter Bohnenpaste", priceRaw: 4.50, group: "Nachtisch" }
+    ];
+
+    // Menüdatenbank
+    const menuTextData = {
+        getranke: getrankeItems,
+        vorspeise: vorspeiseItems,
+        hauptgericht: hauptgerichtItems,
+        ramen: ramenItems,
+        sushi: sushiAllItems,
+        nachtisch: beilageNachtischItems
+    };
+
+    const allCategories = ['getranke', 'vorspeise', 'hauptgericht', 'ramen', 'sushi', 'nachtisch'];
+    const categoryDisplay = {
+        getranke: 'Getränke', vorspeise: 'Vorspeise', hauptgericht: 'Hauptgericht',
+        ramen: 'Ramen', sushi: 'Sushi', nachtisch: 'Beilage / Nachtisch'
+    };
+    let currentCategory = 'getranke';
+
+    // Bildspeicher (für etwaige zukünftige Nutzung)
+    const STORAGE_KEY = 'fuji_menu_images';
+    let storedImages = {};
+    function loadStoredImages() {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) { try { storedImages = JSON.parse(raw); } catch(e) { storedImages = {}; } } else { storedImages = {}; }
+        allCategories.forEach(cat => { if (!storedImages[cat]) storedImages[cat] = null; });
+    }
+    function saveStoredImages() { localStorage.setItem(STORAGE_KEY, JSON.stringify(storedImages)); }
+    function setImageForCategory(cat, img) { storedImages[cat] = img; saveStoredImages(); if (currentCategory === cat) renderCategoryContent(); }
+    function resetImageForCategory(cat) { storedImages[cat] = null; saveStoredImages(); if (currentCategory === cat) renderCategoryContent(); }
+    function hasTextMenu(cat) { return menuTextData[cat] && menuTextData[cat].length > 0; }
+
+    function renderMenuItemRows(items) {
+        return items.map(item => `<div class="menu-item-row"><div class="item-info"><span class="item-id">${escapeHtml(item.id)}</span><span class="item-name">${escapeHtml(item.name)}</span><span class="item-desc">${escapeHtml(item.desc)}</span></div><div class="item-price">${formatPrice(item.priceRaw)}</div></div>`).join('');
+    }
+
+    function renderTextMenu(category) {
+        const items = menuTextData[category];
+        if (!items || items.length === 0) return null;
+        const title = categoryDisplay[category];
+        if (category === 'getranke') {
+            const groups = {};
+            items.forEach(item => { if (!groups[item.group]) groups[item.group] = []; groups[item.group].push(item); });
+            let html = `<div class="text-menu"><div class="menu-category-title">${escapeHtml(title)}</div>`;
+            for (let [gName, gItems] of Object.entries(groups)) html += `<div class="subcategory-title">🍺 ${escapeHtml(gName)}</div><div class="menu-items">${renderMenuItemRows(gItems)}</div>`;
+            html += `<div class="info-note"><span><i class="fas fa-check-circle"></i> Ausgesuchte Getränke</span><span><i class="fas fa-japan"></i> Japanische & regionale Spezialitäten</span></div></div>`;
+            return html;
+        } else if (category === 'hauptgericht') {
+            const warm = items.filter(i => i.group === 'warm');
+            const noodle = items.filter(i => i.group === 'noodle');
+            return `<div class="text-menu"><div class="menu-category-title">${escapeHtml(title)}</div><div class="subcategory-title">🍲 Warme Gerichte</div><div class="menu-items">${renderMenuItemRows(warm)}</div><div class="subcategory-title">🍜 Udon & Soba</div><div class="menu-items">${renderMenuItemRows(noodle)}</div><div class="info-note"><span><i class="fas fa-check-circle"></i> Frische Zubereitung</span><span><i class="fas fa-japan"></i> Original Rezepte</span></div></div>`;
+        } else if (category === 'sushi') {
+            const groups = {};
+            items.forEach(item => { if (!groups[item.group]) groups[item.group] = []; groups[item.group].push(item); });
+            let html = `<div class="text-menu"><div class="menu-category-title">${escapeHtml(title)}</div>`;
+            const order = ["Sushi-Sets", "Donburi", "Nigiri", "Temaki", "Maki-Sushi", "Sashimi"];
+            for (let g of order) if (groups[g]) html += `<div class="subcategory-title">🍣 ${escapeHtml(g)}</div><div class="menu-items">${renderMenuItemRows(groups[g])}</div>`;
+            html += `<div class="info-note"><span><i class="fas fa-fish"></i> Frischer Fisch</span><span><i class="fas fa-japan"></i> Nach japanischer Art</span></div></div>`;
+            return html;
+        } else if (category === 'nachtisch') {
+            const groups = {};
+            items.forEach(item => { if (!groups[item.group]) groups[item.group] = []; groups[item.group].push(item); });
+            let html = `<div class="text-menu"><div class="menu-category-title">${escapeHtml(title)}</div>`;
+            if (groups["Beilage"]) html += `<div class="subcategory-title">🍚 Beilage</div><div class="menu-items">${renderMenuItemRows(groups["Beilage"])}</div>`;
+            if (groups["Nachtisch"]) html += `<div class="subcategory-title">🍰 Nachtisch</div><div class="menu-items">${renderMenuItemRows(groups["Nachtisch"])}</div>`;
+            html += `<div class="info-note"><span><i class="fas fa-check-circle"></i> Perfekter Abschluss</span><span><i class="fas fa-japan"></i> Hausgemachte Spezialitäten</span></div></div>`;
+            return html;
+        } else {
+            return `<div class="text-menu"><div class="menu-category-title">${escapeHtml(title)}</div><div class="menu-items">${renderMenuItemRows(items)}</div><div class="info-note"><span><i class="fas fa-check-circle"></i> Frische Zubereitung</span><span><i class="fas fa-japan"></i> Original Rezepte</span></div></div>`;
+        }
+    }
+
+    function renderCategoryContent() {
+        const container = document.getElementById('menuDisplay');
+        if (!container) return;
+        if (hasTextMenu(currentCategory)) container.innerHTML = renderTextMenu(currentCategory);
+        else { container.innerHTML = `<div class="placeholder-text"><i class="fas fa-receipt"></i><p>Menü wird geladen...</p></div>`; }
+    }
+
+    function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m])); }
+
+    function initCategoryButtons() {
+        const btns = document.querySelectorAll('.menu-btn');
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const cat = btn.getAttribute('data-category');
+                if (!cat) return;
+                btns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCategory = cat;
+                renderCategoryContent();
+            });
+        });
+        document.querySelector('.menu-btn[data-category="getranke"]').classList.add('active');
+    }
+
+    function addGlobalStyles() {
+        const style = document.createElement('style');
+        style.textContent = `.menu-display { box-shadow: 0 10px 25px -5px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,240,0.05); } .item-id { font-family: monospace; } ::selection { background: #b87c4f; color: #0a0705; }`;
+        document.head.appendChild(style);
+    }
+
+    function init() {
+        loadStoredImages();
+        initCategoryButtons();
+        renderCategoryContent();
+        addGlobalStyles();
+    }
+    init();
+</script>
+</body>
+</html>
